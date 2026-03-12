@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurum Dental OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">✦</div>
+        <div>
+          <p class="brand-name">Aurum Dental OS</p>
+          <p class="brand-sub">Practice Management</p>
+        </div>
+      </div>
+
+      <nav class="nav-menu" id="navMenu">
+        <p class="nav-label">Workspace</p>
+        <button class="nav-item active" data-target="overview">Overview</button>
+        <button class="nav-item" data-target="patient-profile">Patient Records</button>
+        <button class="nav-item" data-target="schedule">Appointment Scheduling</button>
+        <button class="nav-item" data-target="charting">Dental Charting</button>
+        <button class="nav-item" data-target="treatment">Treatment Planning</button>
+        <button class="nav-item" data-target="billing">Billing & Payments</button>
+        <button class="nav-item" data-target="imaging">Imaging & Attachments</button>
+        <button class="nav-item" data-target="analytics">Reports & Analytics</button>
+        <button class="nav-item" data-target="staff">Staff Management</button>
+        <button class="nav-item" data-target="communication">Patient Communication</button>
+      </nav>
+
+      <div class="backup-card">
+        <h4>Cloud Backup</h4>
+        <p id="backupStatusText">Encrypted sync is healthy.</p>
+        <div class="backup-metric">
+          <span>Last backup</span>
+          <strong id="backupTime">9 min ago</strong>
+        </div>
+        <div class="backup-bar"><span id="backupFill"></span></div>
+        <button class="ghost-btn full" id="runBackupBtn">Run Backup</button>
+      </div>
+    </aside>
+
+    <main class="content-area">
+      <header class="topbar card" id="overview">
+        <div>
+          <p class="eyebrow">Good morning, Dr. Rivera</p>
+          <h1>Practice Command Center</h1>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost-btn" id="newApptBtn">+ New Appointment</button>
+          <button class="primary-btn" id="newPatientBtn">+ Add Patient</button>
+          <div class="avatar">DR</div>
+        </div>
+      </header>
+
+      <section class="kpi-grid">
+        <article class="card kpi"><p>Today's Patients</p><h3 id="kpiPatients">34</h3><span class="trend up">↑ 12% from last week</span></article>
+        <article class="card kpi"><p>Chair Utilization</p><h3 id="kpiUtil">87%</h3><span class="trend up">↑ 5% operational efficiency</span></article>
+        <article class="card kpi"><p>Pending Treatment Plans</p><h3 id="kpiPlans">11</h3><span class="trend">4 awaiting approval</span></article>
+        <article class="card kpi"><p>Collections This Week</p><h3 id="kpiCollections">$24.6K</h3><span class="trend up">↑ 8% on target</span></article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="card panel schedule" id="schedule">
+          <div class="panel-header"><h2>Appointment Scheduling</h2><span class="chip">Live Calendar</span></div>
+          <div class="calendar-preview">
+            <div class="time-col"><span>09:00</span><span>10:30</span><span>12:00</span><span>14:00</span><span>15:30</span></div>
+            <div class="appointments" id="appointmentsList"></div>
+          </div>
+        </article>
+
+        <article class="card panel patient-profile" id="patient-profile">
+          <div class="panel-header"><h2>Patient Records</h2><span class="chip">Profile Snapshot</span></div>
+          <div class="profile">
+            <div class="profile-avatar" id="patientInitials">AL</div>
+            <div><h3 id="patientName">Alex Lee</h3><p id="patientMeta">Preferred: SMS · Insurance verified</p></div>
+          </div>
+          <div class="profile-metrics">
+            <div><span>Risk Flag</span><strong id="riskFlag">Low</strong></div>
+            <div><span>Last Visit</span><strong id="lastVisit">2 weeks ago</strong></div>
+            <div><span>Next Visit</span><strong id="nextVisit">Tomorrow</strong></div>
+          </div>
+          <div class="tags" id="patientTags"><span>Orthodontics</span><span>Allergy Noted</span><span>Plan Active</span></div>
+        </article>
+
+        <article class="card panel charting" id="charting">
+          <div class="panel-header"><h2>Dental Charting</h2><span class="chip">Visual Map</span></div>
+          <div class="teeth-grid" id="teethGrid"></div>
+          <div class="legend">
+            <span><i class="dot healthy"></i>Healthy</span>
+            <span><i class="dot treated"></i>Treated</span>
+            <span><i class="dot monitor"></i>Monitor</span>
+          </div>
+        </article>
+
+        <article class="card panel treatment" id="treatment">
+          <div class="panel-header"><h2>Treatment Planning</h2><span class="chip">Care Journey</span></div>
+          <div class="steps" id="stepsList"></div>
+        </article>
+
+        <article class="card panel billing" id="billing">
+          <div class="panel-header"><h2>Billing & Payments</h2><span class="chip">Revenue</span></div>
+          <div class="billing-summary">
+            <div><span>Collected</span><strong id="collectedValue">$18,420</strong></div>
+            <div><span>Pending</span><strong id="pendingValue">$4,130</strong></div>
+            <div><span>Claim Drafts</span><strong id="claimsCount">7</strong></div>
+          </div>
+          <div class="mini-bars" id="billingBars"></div>
+        </article>
+
+        <article class="card panel imaging" id="imaging">
+          <div class="panel-header"><h2>Imaging & Attachments</h2><span class="chip">Recent Uploads</span></div>
+          <div class="imaging-grid" id="imagingGrid"></div>
+        </article>
+
+        <article class="card panel analytics" id="analytics">
+          <div class="panel-header"><h2>Reports & Analytics</h2><span class="chip">Practice Pulse</span></div>
+          <div class="line-chart"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path id="chartPath"/></svg></div>
+          <div class="analytics-foot"><div><span>Case Acceptance</span><strong id="caseAcceptance">78%</strong></div><div><span>No-show Rate</span><strong id="noShow">3.2%</strong></div></div>
+        </article>
+
+        <article class="card panel staff" id="staff">
+          <div class="panel-header"><h2>Staff Management</h2><span class="chip">Team Status</span></div>
+          <div class="staff-cards" id="staffCards"></div>
+        </article>
+
+        <article class="card panel communication" id="communication">
+          <div class="panel-header"><h2>Patient Communication</h2><span class="chip">Inbox & Reminders</span></div>
+          <div class="messages" id="messagesList"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="entryDialog">
+    <form method="dialog" id="entryForm">
+      <h3 id="dialogTitle">Add Entry</h3>
+      <label>Name<input required name="name" /></label>
+      <label>Details<input required name="detail" /></label>
+      <menu>
+        <button value="cancel" class="ghost-btn">Cancel</button>
+        <button value="submit" class="primary-btn">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
